@@ -1,0 +1,95 @@
+
+<html class="container-fluid home-page">
+<head>
+</head>
+
+<body class="container">
+<div id="sketch">
+    <canvas id="paint"></canvas>
+</div>
+
+
+
+
+<! -- Script tag-->
+<script type="text/javascript"> 
+	var canvas = document.getElementById('paint');
+	var ctx = canvas.getContext('2d');
+	var ctx1= canvas.getContext('2d');
+
+	function onLoad() {
+		console.log('onload...');
+		ctx1.moveTo(10, 10);
+		ctx1.lineTo(10, 100);
+		
+		ctx1.moveTo(10, 100);
+		ctx1.lineTo(100, 100);
+		
+		ctx1.moveTo(100, 100);
+		ctx1.lineTo(100, 10);
+		
+		ctx1.moveTo(100, 10);
+		ctx1.lineTo(10, 10);
+		
+		ctx1.stroke();
+	}
+	
+	var onPaint = function() {
+			ctx.beginPath();
+			ctx.moveTo(last_mouse.x, last_mouse.y);
+			ctx.lineTo(mouse.x, mouse.y);
+			if (((last_mouse.x >= 7 && last_mouse.x <= 13) && (mouse.y >= 10 && mouse.y <= 100)) || ((mouse.y >= 97 && mouse.y <= 103) && (mouse.x >=10 && mouse.x <= 100)) || (last_mouse.x >= 97 && last_mouse.x <= 103)) {
+				console.log('hhheee');
+				ctx.strokeStyle = 'red';
+				ctx.stroke();
+  
+			} else {
+				ctx.strokeStyle = 'black';
+				ctx.stroke();
+			}
+	};
+
+	canvas.addEventListener('mousedown', function(e) {
+		canvas.addEventListener('mousemove', onPaint, false);
+	}, false);
+	
+	canvas.addEventListener('mouseup', function() {
+		canvas.removeEventListener('mousemove', onPaint, false);
+	}, false);
+	
+	var mouse = {x: 0, y: 0};
+	var last_mouse = {x: 0, y: 0};
+	
+	/* Mouse Capturing Work */
+	canvas.addEventListener('mousemove', function(e) {
+		last_mouse.x = mouse.x;
+		last_mouse.y = mouse.y;
+		
+		mouse.x = e.pageX - this.offsetLeft;
+		mouse.y = e.pageY - this.offsetTop;
+		
+		// color
+		// var radius = 10; // or whatever
+        // var fillColor = 'green';
+        // ctx.fillCircle(mouse.x, mouse.y, radius, fillColor);
+		 
+	}, false);
+	
+	onLoad();
+	
+</script>
+
+<! -- Style Sheet -->
+<style>
+html, body {
+	width: 100%;
+	height: 100%;
+}
+#sketch {
+	border: 10px solid gray;
+	width: 100%;
+	height: 100%;
+}
+</style>
+</body>
+</html>

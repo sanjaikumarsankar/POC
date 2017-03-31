@@ -1,0 +1,45 @@
+.home-page {
+    background: #4D4D5D;	
+}
+
+.heading {
+	text-align: center;
+}
+
+.row {
+	margin-top: 20px;
+}
+.label-style {
+	display: inline-block;
+    width: 100px;
+}
+
+.list-icon {
+    margin-bottom: 20px;
+    margin-right: 20px;
+    color: black;
+}
+.add-icon {
+    margin-bottom: 20px;
+    color: black;
+}
+
+.add-icon-margin{
+	margin-left: 10px;
+}
+
+.form-style {
+	margin-top: 20px;
+}
+
+.view-heading {
+	margin: 20px 0 20px;
+}
+
+.form-validation {
+	color: red;
+}
+
+.no-data {
+	text-align: center;	
+}

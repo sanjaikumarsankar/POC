@@ -1,0 +1,34 @@
+<form name="userForm" class="form-group container-fluid form-style" novalidate>
+	<div class="form-group row">
+		<label class="label-style">First Name:* </label>
+			<input type="text" ng-model="formData.firstName" name="firstName" ng-maxlength="150" required>
+			<span ng-show="userForm.firstName.$error.required && userForm.firstName.$dirty" class="form-validation">required</span>
+			<span ng-show="userForm.firstName.$error.maxlength" class="form-validation">Max length should not exceed more than 150 character</span>
+	</div>		
+	<div class="form-group row">
+		<label class="label-style">Last Name:* </label>
+		<input type="text" ng-model="formData.lastName" ng-maxlength="150" name="lastName" required>
+		<span ng-show="userForm.lastName.$error.required && userForm.lastName.$dirty" class="form-validation">required</span>
+		<span ng-show="userForm.lastName.$error.maxlength" class="form-validation">Max length should not exceed more than 150 character</span>
+	</div>
+	
+	<div class="form-group row">
+		<label class="label-style">Email:* </label>
+		<input type="email" ng-model="formData.email" ng-maxlength="150" name="email" ng-pattern="emailFormat" required>
+		<span ng-show="userForm.email.$error.required && userForm.email.$dirty" class="form-validation">required</span>
+		<span ng-show="!userForm.email.$error.required && userForm.email.$dirty && userForm.email.$error.pattern" class="form-validation">invalid email </span>
+		<span ng-show="userForm.email.$error.maxlength" class="form-validation">Max length should not exceed more than 150 character</span>
+	</div>
+	
+	<div class="form-group row">
+		<label class="label-style">Position: </label>
+		<input type="text" ng-model="formData.position" ng-maxlength="75" name="position">
+		<span ng-show="userForm.position.$error.maxlength" class="form-validation">Max length should not exceed more than 75 character</span>
+	</div>
+	
+	<div class="form-group row">
+		<button  id="submit" class="btn btn-success" ng-click="submitForm(userForm.$valid)" ng-disabled="!userForm.$valid">Submit</button>
+		<button  id="reset" class="btn btn-secondary" ng-click="reset()"/>Reset</button>
+		<button  id="home" class="btn btn-primary" ng-click="backToHome()"/>Home</button>
+	</div>
+ </form>
